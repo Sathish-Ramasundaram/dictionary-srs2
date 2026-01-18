@@ -16,7 +16,6 @@ searchInput.addEventListener("keydown", e => {
     `<div>
     <h3>${found.English}</h3>
 
-
     <p><strong>Meaning:</strong> ${found.Meaning}</p>
     <p><strong>Tamil:</strong> ${found.Tamil}</p>
     <p><strong>Kannada:</strong> ${found.Kannada}</p>
