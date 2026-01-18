@@ -15,6 +15,7 @@ searchInput.addEventListener("keydown", e => {
     result.innerHTML = found ? 
     `<div>
     <h3>${found.English}</h3>
+    ${found.Image ? `<img src="${found.Image}" alt="${found.English}" width="150">` : '<p>No image available</p>'}
 
     <p><strong>Meaning:</strong> ${found.Meaning}</p>
     <p><strong>Tamil:</strong> ${found.Tamil}</p>
