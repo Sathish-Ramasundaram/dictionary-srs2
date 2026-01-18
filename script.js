@@ -6,26 +6,39 @@ fetch(SHEET_URL)
   .then(res => res.json())
   .then(data => window.words = data);
 
-searchInput.addEventListener("keydown", e => {
-    if (e.key === "Enter") {
-        const found = words.find(
-        w => w.English.toLowerCase() === searchInput.value.toLowerCase()
-    );
+searchInput.addEventListener
+("keydown", e => 
+    {
+    if (e.key === "Enter") 
+        {
+            const query = searchInput.value.trim();
 
+            const found = words.find
+            (
+                w => w.English.toLowerCase() === searchInput.value.toLowerCase()
+            );
 
-    result.innerHTML = found ? 
-    `<div>
-    <h3>${found.English}</h3>
-    ${found.Image ? `<img src="${found.Image}" alt="${found.English}" width = "150">` : '<p>No image available</p>'}
-
-    <p><strong>Meaning:</strong> ${found.Meaning}</p>
-    <p><strong>Tamil:</strong> ${found.Tamil}</p>
-    <p><strong>Kannada:</strong> ${found.Kannada}</p>
-    <p><strong>Hindi:</strong> ${found.Hindi}</p>
-    
-    </div>` : "<p>Word not found</p>";
+            if (found)
+                {
+                    result.innerHTML = 
+                    `<div>
+                    <h3>${found.English}</h3>
+                    ${found.Image ? `<img src="${found.Image}" alt="${found.English}" width = "150">` : '<p>No image available</p>'}
+                    
+                    <p><strong>Meaning:</strong> ${found.Meaning}</p>
+                    <p><strong>Tamil:</strong> ${found.Tamil}</p>
+                    <p><strong>Kannada:</strong> ${found.Kannada}</p>
+                    <p><strong>Hindi:</strong> ${found.Hindi}</p>
+                    </div>`;
+                }
+            else
+                {
+                    const googleMeaningURL = `https://www.google.com/search?q=${encodeURIComponent(query + " meaning")}`;
+                    window.open(googleMeaningURL, "_blank");
+                }
+        }
     }
-});
+);
 
 
 
